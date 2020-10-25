@@ -11,13 +11,23 @@ const config = {
     rules: [
       {
         use: "babel-loader",
-        test: /\.js$/,
+        test: /\.js$/, // specify file type
       },
       {
         loader: ExtractTextPlugin.extract({
           loader: "css-loader",
         }),
         test: /\.css$/,
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: { limit: 40000 }, // save img greater than 40K bytes into separate file
+          },
+          "image-webpack-loader",
+        ], // process from right to left
       },
     ],
   },
