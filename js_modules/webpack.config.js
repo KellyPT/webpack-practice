@@ -12,6 +12,10 @@ const config = {
         use: "babel-loader",
         test: /\.js$/,
       },
+      {
+        use: ["style-loader", "css-loader"], // loaders will be applied from right to left
+        test: /\.css$/,
+      },
     ],
   },
 };
