@@ -23,7 +23,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "[name].js",
+    filename: "[name].[chunkhash].js",
   },
   module: {
     rules: [
@@ -40,7 +40,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
+      names: ["vendor", "manifest"], // manifest tell us if vendor bundle actually changed
     }),
     new HtmlWebpackPlugin({
       template: "src/index.html",
