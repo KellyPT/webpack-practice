@@ -1,5 +1,6 @@
 var webpack = require("webpack");
 var path = require("path");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 // we can get this list of package.json
 const VENDOR_LIBS = [
@@ -40,6 +41,9 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
+    }),
+    new HtmlWebpackPlugin({
+      template: "src/index.html",
     }),
   ],
 };
