@@ -1,11 +1,28 @@
 var webpack = require("webpack");
 var path = require("path");
 
+// we can get this list of package.json
+const VENDOR_LIBS = [
+  "faker",
+  "lodash",
+  "react",
+  "react-dom",
+  "react-input-range",
+  "react-redux",
+  "react-router",
+  "redux",
+  "redux-form",
+  "redux-thunk",
+];
+
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    bundle: "./src/index.js", // bundle for our code based on dependencies listed in index.js
+    vendor: VENDOR_LIBS, // bundle for module dependencies i.e. vendor code
+  },
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].js",
   },
   module: {
     rules: [
